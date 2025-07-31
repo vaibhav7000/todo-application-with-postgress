@@ -25,6 +25,21 @@ router.post("/", validateUserSchema, checkUserNameExist, async (req: Request, re
     }
 });
 
+router.get("/allusers", async (req: Request, res: Response, next: NextFunction) => {
+    const query: string = `SELECT username FROM users`
+
+    try {
+        const result = await client.query(query);
+
+        res.status(StatusCodes.OK).json({
+            msg: ReasonPhrases.OK,
+            users: result.rows
+        })
+    } catch (error) {
+        next(error);
+    }
+})
+
 
 
 
