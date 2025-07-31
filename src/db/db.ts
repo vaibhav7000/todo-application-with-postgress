@@ -7,9 +7,9 @@ const client = new Client({
 export default async function connectionWithPG(): Promise<void> {
 
     try {
-        const connection = await client.connect();
+        await client.connect();
         console.log("connection with postgres is success");
-        console.log(connection);
+        // console.log(connection); undefined
 
         try {
             await createUsersTable();
@@ -34,7 +34,7 @@ async function createUsersTable(): Promise<void> {
     const query: string = `CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         username VARCHAR(50) UNIQUE NOT NULL,
-        password VARCHAR(50) UNIQUE NOT NULL CHECK(char_length(password) >= 8)
+        password VARCHAR(50) NOT NULL CHECK(char_length(password) >= 8)
     );`
 
     try {
@@ -68,6 +68,10 @@ async function createTodoTable(): Promise<void> {
     }
 }
 
+
+export {
+    client
+}
 
 
 /*

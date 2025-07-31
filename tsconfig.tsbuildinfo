@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/db/db.ts"],"version":"5.8.3"}
+{"root":["./src/index.ts","./src/db/db.ts","./src/middlewares/todo.ts","./src/middlewares/user.ts","./src/routes/allrouters.ts","./src/routes/todorouter.ts","./src/routes/userrouter.ts","./src/utils/types.ts","./src/utils/zodtypes.ts"],"version":"5.8.3"}
